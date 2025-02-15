@@ -1,7 +1,7 @@
-# Tickreyiz - Trendyol Fiyat Takip Botu
+# Trendy - Trendyol Fiyat Takip Botu
 
 ## 📌 Proje Açıklaması | 📌 Project Description
-Tickreyiz, Telegram üzerinden çalışan bir Trendyol fiyat takip botudur. Kullanıcılar, bir ürünün URL'sini ekleyerek fiyat değişikliklerinden haberdar olabilirler. Bot, belirli aralıklarla fiyatları kontrol eder ve bir değişiklik olduğunda kullanıcıya bildirim gönderir. | Tickreyiz is a Telegram-based Trendyol price tracking bot. Users can add a product URL to stay informed about price changes. The bot checks prices at regular intervals and notifies users when changes occur.
+Trendy, Telegram üzerinden çalışan bir Trendyol fiyat takip botudur. Kullanıcılar, bir ürünün URL'sini ekleyerek fiyat değişikliklerinden haberdar olabilirler. Bot, belirli aralıklarla fiyatları kontrol eder ve bir değişiklik olduğunda kullanıcıya bildirim gönderir. | Trendy is a Telegram-based Trendyol price tracking bot. Users can add a product URL to stay informed about price changes. The bot checks prices at regular intervals and notifies users when changes occur.
 
 ---
 

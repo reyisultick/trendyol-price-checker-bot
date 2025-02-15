@@ -170,7 +170,7 @@ async def clear(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def main():
     create_database()
 
-    application = Application.builder().token("7144704911:AAH_zcsNRrjZIRzCUjXC8kEQ6A1ZdmVNO9o").build()
+    application = Application.builder().token("YOUR TELEGRAM BOT TOKEN").build()
     application.add_handler(CommandHandler("clear", clear))
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("addproduct", add_product))

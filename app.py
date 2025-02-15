@@ -53,10 +53,10 @@ def get_product_info(url):
             discount_percentage = (((original_price_num - discounted_price_num) / original_price_num) * 100
                                    if discounted_price else 0)
             result = (
-                f"📌 Ürün URL: {url}\n"
-                f"💰 Orijinal Fiyat: {original_price} TL\n"
-                f"🎉 İndirimli Fiyat: {discounted_price if discounted_price else 'İndirim Yok'} TL\n"
-                f"📉 İndirim Oranı: %{discount_percentage:.2f}\n"
+                f"📌 Product URL: {url}\n"
+                f"💰 Original Price: {original_price} TL\n"
+                f"🎉 Discounted Price: {discounted_price if discounted_price else 'İndirim Yok'} TL\n"
+                f"📉 Discount Percentage: %{discount_percentage:.2f}\n"
             )
             return original_price, discounted_price, result
         else:
@@ -110,12 +110,12 @@ async def check_price_changes(application: Application):
                 old_original_price, old_discounted_price = old_product
                 if old_original_price != original_price or old_discounted_price != discounted_price:
                     message = (
-                        f"🔔 Fiyat Değişikliği Bildirimi\n\n"
-                        f"📌 Ürün URL: {url}\n"
-                        f"💰 Eski Orijinal Fiyat: {old_original_price} TL\n"
-                        f"💰 Yeni Orijinal Fiyat: {original_price} TL\n"
-                        f"🎉 Eski İndirimli Fiyat: {old_discounted_price} TL\n"
-                        f"🎉 Yeni İndirimli Fiyat: {discounted_price} TL\n"
+                        f"🔔 Price Chagement Notification\n\n"
+                        f"📌 Product URL: {url}\n"
+                        f"💰 Old Original Price: {old_original_price} TL\n"
+                        f"💰 New Original Price: {original_price} TL\n"
+                        f"🎉 Old Discounted Price: {old_discounted_price} TL\n"
+                        f"🎉 New Discounted Price: {discounted_price} TL\n"
                     )
                     try:
                         discount_percentage = (
@@ -125,7 +125,7 @@ async def check_price_changes(application: Application):
                         )
                     except Exception:
                         discount_percentage = 0
-                    message += f"📉 İndirim Oranı: %{discount_percentage:.2f}"
+                    message += f"📉 Discount Percentage: %{discount_percentage:.2f}"
                     
                     if user_id:
                         await application.bot.send_message(chat_id=user_id, text=message)
@@ -141,7 +141,7 @@ async def background_price_check(application: Application):
         await asyncio.sleep(60)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Merhaba, ben Tickreyiz! Bir ürün URL'si eklemek için /addproduct komutunu kullanın.")
+    await update.message.reply_text("Hello I am Trendy! Use /addproduct to add a product to database, use /clear to clean the database. ")
 
 async def add_product(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global user_id
@@ -156,7 +156,7 @@ async def add_product(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(result)
         user_id = update.effective_chat.id
     else:
-        await update.message.reply_text("Lütfen bir Trendyol ürün URL'si girin.")
+        await update.message.reply_text("Please enter a valid Trendyol url")
 async def clear(update: Update, context: ContextTypes.DEFAULT_TYPE):
     conn = sqlite3.connect("products.db")
     c = conn.cursor()
@@ -165,7 +165,7 @@ async def clear(update: Update, context: ContextTypes.DEFAULT_TYPE):
     conn.commit()
     conn.close()
 
-    await update.message.reply_text("Veritabanındaki tüm ürünler başarıyla silindi.")
+    await update.message.reply_text("Products on the database successfully deleted")
 
 async def main():
     create_database()
